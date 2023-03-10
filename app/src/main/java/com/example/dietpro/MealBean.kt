@@ -18,6 +18,7 @@ class MealBean(c: Context) {
     private var userName = ""
 
     private var errors = ArrayList<String>()
+    private var checkParameter = "is not exist"
 
     fun setMealId(mealIdx: String) {
 	 mealId = mealIdx
@@ -117,7 +118,7 @@ class MealBean(c: Context) {
        errors.clear()
 			
 			if (!allMealmealIds.contains(mealId)) {
-				errors.add("The mealId is not exist")
+				errors.add(mealId + checkParameter)
 		    }
           if (mealId != "") {
 	//validate
@@ -166,7 +167,7 @@ class MealBean(c: Context) {
    fun isDeleteMealError(allMealmealIds: List<String>): Boolean {
         errors.clear()
 			 if (!allMealmealIds.contains(mealId)) {
-			    errors.add("The mealId is not exist")
+			    errors.add(mealId + checkParameter)
         }
         return errors.size > 0
 		}    
@@ -174,7 +175,7 @@ class MealBean(c: Context) {
    	fun isSearchMealError(allMealdatess: List<String>): Boolean {
         errors.clear()
         if (!allMealdatess.contains(dates)) {
-            errors.add("The dates is not exist")
+            errors.add(dates + checkParameter)
         }
         return errors.size > 0
     }
@@ -182,7 +183,7 @@ class MealBean(c: Context) {
 		fun isSearchMealIdError(allMealIds: List<String>): Boolean {
     	   errors.clear()
    	       if (!allMealIds.contains(mealId)) {
-    	       errors.add("The mealId is not exist")
+    	       errors.add(mealId + checkParameter)
     	   }
            return errors.size > 0
     }
