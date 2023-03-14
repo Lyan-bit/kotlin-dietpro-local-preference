@@ -27,7 +27,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         val mealCols: Array<String> = arrayOf<String>("tableId", "mealId", "mealName", "calories", "dates", "images", "analysis", "userName")
         const val mealNumberCols = 7
-    
+
    }
 private val mealCreateSchema =
     "create table Meal (tableId integer primary key autoincrement" +
@@ -60,15 +60,7 @@ private val mealCreateSchema =
             database.query(mealTableName, mealCols, null, null, null, null, null)
         cursor.moveToFirst()
         while (!cursor.isAfterLast()) {
-            val mealvo = MealVO()
-            mealvo.setMealId(cursor.getString(mealColMealId))
-            mealvo.setMealName(cursor.getString(mealColMealName))
-            mealvo.setCalories(cursor.getDouble(mealColCalories))
-            mealvo.setDates(cursor.getString(mealColDates))
-            mealvo.setImages(cursor.getString(mealColImages))
-            mealvo.setAnalysis(cursor.getString(mealColAnalysis))
-            mealvo.setUserName(cursor.getString(mealColUserName))
-            res.add(mealvo)
+			res.add(setData(cursor))
             cursor.moveToNext()
         }
         cursor.close()
@@ -98,21 +90,13 @@ private val mealCreateSchema =
 	        )
 	        cursor.moveToFirst()
 	        while (!cursor.isAfterLast()) {
-	            val mealvo = MealVO()
-	            mealvo.setMealId(cursor.getString(mealColMealId))
-	            mealvo.setMealName(cursor.getString(mealColMealName))
-	            mealvo.setCalories(cursor.getDouble(mealColCalories))
-	            mealvo.setDates(cursor.getString(mealColDates))
-	            mealvo.setImages(cursor.getString(mealColImages))
-	            mealvo.setAnalysis(cursor.getString(mealColAnalysis))
-	            mealvo.setUserName(cursor.getString(mealColUserName))
-	            res.add(mealvo)
+				res.add(setData(cursor))
 	            cursor.moveToNext()
 	        }
 	        cursor.close()
 	        return res
 	    }
-	     
+
     fun searchByMealmealName(value: String): ArrayList<MealVO> {
             val res = ArrayList<MealVO>()
 	        database = readableDatabase
@@ -123,21 +107,13 @@ private val mealCreateSchema =
 	        )
 	        cursor.moveToFirst()
 	        while (!cursor.isAfterLast()) {
-	            val mealvo = MealVO()
-	            mealvo.setMealId(cursor.getString(mealColMealId))
-	            mealvo.setMealName(cursor.getString(mealColMealName))
-	            mealvo.setCalories(cursor.getDouble(mealColCalories))
-	            mealvo.setDates(cursor.getString(mealColDates))
-	            mealvo.setImages(cursor.getString(mealColImages))
-	            mealvo.setAnalysis(cursor.getString(mealColAnalysis))
-	            mealvo.setUserName(cursor.getString(mealColUserName))
-	            res.add(mealvo)
+				res.add(setData(cursor))
 	            cursor.moveToNext()
 	        }
 	        cursor.close()
 	        return res
 	    }
-	     
+
     fun searchByMealcalories(value: String): ArrayList<MealVO> {
             val res = ArrayList<MealVO>()
 	        database = readableDatabase
@@ -148,21 +124,13 @@ private val mealCreateSchema =
 	        )
 	        cursor.moveToFirst()
 	        while (!cursor.isAfterLast()) {
-	            val mealvo = MealVO()
-	            mealvo.setMealId(cursor.getString(mealColMealId))
-	            mealvo.setMealName(cursor.getString(mealColMealName))
-	            mealvo.setCalories(cursor.getDouble(mealColCalories))
-	            mealvo.setDates(cursor.getString(mealColDates))
-	            mealvo.setImages(cursor.getString(mealColImages))
-	            mealvo.setAnalysis(cursor.getString(mealColAnalysis))
-	            mealvo.setUserName(cursor.getString(mealColUserName))
-	            res.add(mealvo)
+				res.add(setData(cursor))
 	            cursor.moveToNext()
 	        }
 	        cursor.close()
 	        return res
 	    }
-	     
+
     fun searchByMealdates(value: String): ArrayList<MealVO> {
             val res = ArrayList<MealVO>()
 	        database = readableDatabase
@@ -173,21 +141,13 @@ private val mealCreateSchema =
 	        )
 	        cursor.moveToFirst()
 	        while (!cursor.isAfterLast()) {
-	            val mealvo = MealVO()
-	            mealvo.setMealId(cursor.getString(mealColMealId))
-	            mealvo.setMealName(cursor.getString(mealColMealName))
-	            mealvo.setCalories(cursor.getDouble(mealColCalories))
-	            mealvo.setDates(cursor.getString(mealColDates))
-	            mealvo.setImages(cursor.getString(mealColImages))
-	            mealvo.setAnalysis(cursor.getString(mealColAnalysis))
-	            mealvo.setUserName(cursor.getString(mealColUserName))
-	            res.add(mealvo)
+				res.add(setData(cursor))
 	            cursor.moveToNext()
 	        }
 	        cursor.close()
 	        return res
 	    }
-	     
+
     fun searchByMealimages(value: String): ArrayList<MealVO> {
             val res = ArrayList<MealVO>()
 	        database = readableDatabase
@@ -198,21 +158,13 @@ private val mealCreateSchema =
 	        )
 	        cursor.moveToFirst()
 	        while (!cursor.isAfterLast()) {
-	            val mealvo = MealVO()
-	            mealvo.setMealId(cursor.getString(mealColMealId))
-	            mealvo.setMealName(cursor.getString(mealColMealName))
-	            mealvo.setCalories(cursor.getDouble(mealColCalories))
-	            mealvo.setDates(cursor.getString(mealColDates))
-	            mealvo.setImages(cursor.getString(mealColImages))
-	            mealvo.setAnalysis(cursor.getString(mealColAnalysis))
-	            mealvo.setUserName(cursor.getString(mealColUserName))
-	            res.add(mealvo)
+				res.add(setData(cursor))
 	            cursor.moveToNext()
 	        }
 	        cursor.close()
 	        return res
 	    }
-	     
+
     fun searchByMealanalysis(value: String): ArrayList<MealVO> {
             val res = ArrayList<MealVO>()
 	        database = readableDatabase
@@ -223,21 +175,13 @@ private val mealCreateSchema =
 	        )
 	        cursor.moveToFirst()
 	        while (!cursor.isAfterLast()) {
-	            val mealvo = MealVO()
-	            mealvo.setMealId(cursor.getString(mealColMealId))
-	            mealvo.setMealName(cursor.getString(mealColMealName))
-	            mealvo.setCalories(cursor.getDouble(mealColCalories))
-	            mealvo.setDates(cursor.getString(mealColDates))
-	            mealvo.setImages(cursor.getString(mealColImages))
-	            mealvo.setAnalysis(cursor.getString(mealColAnalysis))
-	            mealvo.setUserName(cursor.getString(mealColUserName))
-	            res.add(mealvo)
+				res.add(setData(cursor))
 	            cursor.moveToNext()
 	        }
 	        cursor.close()
 	        return res
 	    }
-	     
+
     fun searchByMealuserName(value: String): ArrayList<MealVO> {
             val res = ArrayList<MealVO>()
 	        database = readableDatabase
@@ -248,34 +192,18 @@ private val mealCreateSchema =
 	        )
 	        cursor.moveToFirst()
 	        while (!cursor.isAfterLast()) {
-	            val mealvo = MealVO()
-	            mealvo.setMealId(cursor.getString(mealColMealId))
-	            mealvo.setMealName(cursor.getString(mealColMealName))
-	            mealvo.setCalories(cursor.getDouble(mealColCalories))
-	            mealvo.setDates(cursor.getString(mealColDates))
-	            mealvo.setImages(cursor.getString(mealColImages))
-	            mealvo.setAnalysis(cursor.getString(mealColAnalysis))
-	            mealvo.setUserName(cursor.getString(mealColUserName))
-	            res.add(mealvo)
+	            res.add(setData(cursor))
 	            cursor.moveToNext()
 	        }
 	        cursor.close()
 	        return res
 	    }
-	     
+
 
     fun editMeal(mealvo: MealVO) {
         database = writableDatabase
-        val wr = ContentValues(mealNumberCols)
-        wr.put(mealCols[mealColMealId], mealvo.getMealId())
-        wr.put(mealCols[mealColMealName], mealvo.getMealName())
-        wr.put(mealCols[mealColCalories], mealvo.getCalories())
-        wr.put(mealCols[mealColDates], mealvo.getDates())
-        wr.put(mealCols[mealColImages], mealvo.getImages())
-        wr.put(mealCols[mealColAnalysis], mealvo.getAnalysis())
-        wr.put(mealCols[mealColUserName], mealvo.getUserName())
         val args = arrayOf(mealvo.getMealId())
-        database.update(mealTableName, wr, "mealId =?", args)
+        database.update(mealTableName, putData(mealvo), "mealId =?", args)
     }
 
     fun deleteMeal(value: String) {
@@ -299,4 +227,29 @@ private val mealCreateSchema =
         val args = arrayOf(mealId)
         database.update(mealTableName, wr, check, args)
     }
+
+	private fun setData(cursor: Cursor): MealVO {
+		val mealvo = MealVO()
+		mealvo.setMealId(cursor.getString(mealColMealId))
+		mealvo.setMealName(cursor.getString(mealColMealName))
+		mealvo.setCalories(cursor.getDouble(mealColCalories))
+		mealvo.setDates(cursor.getString(mealColDates))
+		mealvo.setImages(cursor.getString(mealColImages))
+		mealvo.setAnalysis(cursor.getString(mealColAnalysis))
+		mealvo.setUserName(cursor.getString(mealColUserName))
+
+		return mealvo
+	}
+
+	private fun putData(mealvo: MealVO): ContentValues {
+		val wr = ContentValues(mealNumberCols)
+		wr.put(mealCols[mealColMealId], mealvo.getMealId())
+		wr.put(mealCols[mealColMealName], mealvo.getMealName())
+		wr.put(mealCols[mealColCalories], mealvo.getCalories())
+		wr.put(mealCols[mealColDates], mealvo.getDates())
+		wr.put(mealCols[mealColImages], mealvo.getImages())
+		wr.put(mealCols[mealColAnalysis], mealvo.getAnalysis())
+		wr.put(mealCols[mealColUserName], mealvo.getUserName())
+		return wr
+	}
 }
