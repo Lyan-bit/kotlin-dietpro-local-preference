@@ -35,14 +35,6 @@ class ModelFacade private constructor(context: Context) {
         }
     }
     
-	/* This metatype code requires OclType.java, OclAttribute.java, OclOperation.java */
-	fun initialiseOclTypes() {
-				    val mealOclType: OclType = OclType.createByPKOclType("Meal")
-		mealOclType.setMetatype(Meal::class.java)
-    val userOclType: OclType = OclType.createByPKOclType("User")
-		userOclType.setMetatype(User::class.java)
-    }
-    
     fun createMeal(x: MealVO) { 
 			 db.createMeal(x)
 			 currentMeal = x
