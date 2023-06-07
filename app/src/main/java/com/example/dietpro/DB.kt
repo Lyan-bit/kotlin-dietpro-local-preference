@@ -216,14 +216,14 @@ private val mealCreateSchema =
     fun addUsereatsMeal(userName: String, mealId: String) {
         database = writableDatabase
         val wr = ContentValues(1)
-        wr.put(mealCols.get(mealColUserName), userName)
+        wr.put(mealCols[mealColUserName)] userName)
         val args = arrayOf(mealId)
         database.update(mealTableName, wr, check, args)
     }
     fun removeUsereatsMeal(userName: String, mealId: String) {
         database = writableDatabase
         val wr = ContentValues(1)
-        wr.put(mealCols.get(mealColUserName), "NULL")
+        wr.put(mealCols[mealColUserName], "NULL")
         val args = arrayOf(mealId)
         database.update(mealTableName, wr, check, args)
     }
