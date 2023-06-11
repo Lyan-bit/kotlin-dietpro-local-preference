@@ -70,13 +70,13 @@ private val mealCreateSchema =
     fun createMeal(mealvo: MealVO) {
         database = writableDatabase
         val wr = ContentValues(mealNumberCols)
-        wr.put(mealCols[mealColMealId], mealvo.getMealId())
-        wr.put(mealCols[mealColMealName], mealvo.getMealName())
-        wr.put(mealCols[mealColCalories], mealvo.getCalories())
-        wr.put(mealCols[mealColDates], mealvo.getDates())
-        wr.put(mealCols[mealColImages], mealvo.getImages())
-        wr.put(mealCols[mealColAnalysis], mealvo.getAnalysis())
-        wr.put(mealCols[mealColUserName], mealvo.getUserName())
+        wr.put(mealCols[mealColMealId], mealvo.mealId)
+        wr.put(mealCols[mealColMealName], mealvo.mealName)
+        wr.put(mealCols[mealColCalories], mealvo.calories)
+        wr.put(mealCols[mealColDates], mealvo.dates)
+        wr.put(mealCols[mealColImages], mealvo.images)
+        wr.put(mealCols[mealColAnalysis], mealvo.analysis)
+        wr.put(mealCols[mealColUserName], mealvo.userName)
         database.insert(mealTableName, mealCols[1], wr)
     }
 
@@ -202,7 +202,7 @@ private val mealCreateSchema =
 
     fun editMeal(mealvo: MealVO) {
         database = writableDatabase
-        val args = arrayOf(mealvo.getMealId())
+        val args = arrayOf(mealvo.mealId)
         database.update(mealTableName, putData(mealvo), "mealId =?", args)
     }
 
@@ -216,7 +216,7 @@ private val mealCreateSchema =
     fun addUsereatsMeal(userName: String, mealId: String) {
         database = writableDatabase
         val wr = ContentValues(1)
-        wr.put(mealCols[mealColUserName)] userName)
+        wr.put(mealCols[mealColUserName], userName)
         val args = arrayOf(mealId)
         database.update(mealTableName, wr, check, args)
     }
@@ -230,26 +230,26 @@ private val mealCreateSchema =
 
 	private fun setData(cursor: Cursor): MealVO {
 		val mealvo = MealVO()
-		mealvo.setMealId(cursor.getString(mealColMealId))
-		mealvo.setMealName(cursor.getString(mealColMealName))
-		mealvo.setCalories(cursor.getDouble(mealColCalories))
-		mealvo.setDates(cursor.getString(mealColDates))
-		mealvo.setImages(cursor.getString(mealColImages))
-		mealvo.setAnalysis(cursor.getString(mealColAnalysis))
-		mealvo.setUserName(cursor.getString(mealColUserName))
+		mealvo.mealId = cursor.getString(mealColMealId)
+		mealvo.mealName = cursor.getString(mealColMealName)
+		mealvo.calories = cursor.getDouble(mealColCalories)
+		mealvo.dates = cursor.getString(mealColDates)
+		mealvo.images = cursor.getString(mealColImages)
+		mealvo.analysis = cursor.getString(mealColAnalysis)
+		mealvo.userName = cursor.getString(mealColUserName)
 
 		return mealvo
 	}
 
 	private fun putData(mealvo: MealVO): ContentValues {
 		val wr = ContentValues(mealNumberCols)
-		wr.put(mealCols[mealColMealId], mealvo.getMealId())
-		wr.put(mealCols[mealColMealName], mealvo.getMealName())
-		wr.put(mealCols[mealColCalories], mealvo.getCalories())
-		wr.put(mealCols[mealColDates], mealvo.getDates())
-		wr.put(mealCols[mealColImages], mealvo.getImages())
-		wr.put(mealCols[mealColAnalysis], mealvo.getAnalysis())
-		wr.put(mealCols[mealColUserName], mealvo.getUserName())
+		wr.put(mealCols[mealColMealId], mealvo.mealId)
+		wr.put(mealCols[mealColMealName], mealvo.mealName)
+		wr.put(mealCols[mealColCalories], mealvo.calories)
+		wr.put(mealCols[mealColDates], mealvo.dates)
+		wr.put(mealCols[mealColImages], mealvo.images)
+		wr.put(mealCols[mealColAnalysis], mealvo.analysis)
+		wr.put(mealCols[mealColUserName], mealvo.userName)
 		return wr
 	}
 }
